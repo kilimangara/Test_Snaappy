@@ -83,6 +83,12 @@ public class MainActivity extends AppCompatActivity implements OnFileLoadingList
         }
 
         @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            listener = null;//"отписываемся" от слушателя в случае отмены асинктаска
+        }
+
+        @Override
         protected void onPreExecute() {
             if(listener == null){
                 listener = (OnFileLoadingListener) context.get();
@@ -101,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements OnFileLoadingList
             else{
                 images = null;
             }
-            listener = null;
+            listener = null;//"отписываемся" от слушателя в конце загрузки
         }
 
         @Override
@@ -115,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements OnFileLoadingList
                 buffer = new byte[con.getContentLength()];
                 is.read(buffer);
                 ret = new String(buffer, "UTF-8");
+                is.close();
                     return ret;
 
             }catch(Exception e){
