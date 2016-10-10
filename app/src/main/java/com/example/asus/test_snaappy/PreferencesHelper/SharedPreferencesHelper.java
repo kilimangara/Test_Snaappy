@@ -26,10 +26,21 @@ public class SharedPreferencesHelper  {
         this.prefs= context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
+    /**
+     * Saving flag to determine if urlImages is saved
+     * @param bool
+     *
+     */
     public void putBoolean(boolean bool){
        prefs.edit().putBoolean(KEY, bool).apply();
     }
     public boolean getBoolean(){return prefs.getBoolean(KEY, false);}
+
+    /**
+     *
+     * @param images
+     * json String saving instance of Images model(urls which we save only once)
+     */
     public void putImages(String images){
         prefs.edit().putString(IMAGES, images).apply();
     }

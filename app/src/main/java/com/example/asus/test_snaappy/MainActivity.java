@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnFileLoadingList
     private static final String URL_FILE ="https://docs.google.com/uc?authuser=0&id=0B-yx9N-CwvshMi1Kc3pxbEJUdGM&export=download";
     public GridView gridView;//
     public Images images;
-    public Gson gson;
+    public Gson gson;// Использую Gson для перевода json объекта в строку и обратно для сохранения в префах
     public ImageLoader imageLoader;
     public SharedPreferencesHelper preferencesHelper;
 
